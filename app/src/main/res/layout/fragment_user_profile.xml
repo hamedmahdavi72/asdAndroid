@@ -1,0 +1,113 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.example.arya.fragments.UserProfile">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/profile">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_alignTop="@+id/nationalId"
+                android:background="@drawable/back"
+                android:layout_alignStart="@+id/mobileValue" android:id="@+id/nationalIdValue"/>
+        <TextView
+                android:text="شناسه ملی"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="73dp" android:id="@+id/nationalId"
+                android:background="@drawable/back"
+                android:layout_below="@+id/mobileNumber" android:layout_alignStart="@+id/mobileNumber"
+                android:textStyle="normal|bold"/>
+        <TextView
+                android:text="شماره همراه"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="81dp" android:id="@+id/mobileNumber"
+                android:background="@drawable/back"
+                android:layout_below="@+id/name" android:layout_alignEnd="@+id/name" android:textStyle="normal|bold"/>
+        <TextView
+                android:text="مشخصات فردی"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileinfo" android:textStyle="normal|bold"
+                android:textSize="24sp" android:layout_alignParentTop="true" android:layout_toStartOf="@+id/name"
+                android:layout_marginTop="24dp"/>
+        <TextView
+                android:text="تغییر گذرواژه"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/passwordChange" android:textStyle="normal|bold"
+                android:textSize="18sp"
+                android:layout_below="@+id/nationalIdValue" android:layout_toStartOf="@+id/name"
+                android:layout_marginEnd="24dp"/>
+        <TextView
+                android:text="نام و نام خانوادگی"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/back"
+                android:id="@+id/name"
+                android:textStyle="normal|bold" android:layout_below="@+id/profileinfo"
+                android:layout_alignParentEnd="true"/>
+        <TextView
+                android:text="گذرواژه جدید"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView12" android:layout_alignBaseline="@+id/newPassword"
+                android:layout_alignBottom="@+id/newPassword" android:layout_toStartOf="@+id/nationalId"/>
+        <TextView
+                android:text="تایید گذرواژه جدید"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView13"
+                android:layout_alignBaseline="@+id/confirmPassword" android:layout_alignBottom="@+id/confirmPassword"
+                android:layout_alignStart="@+id/textView12"/>
+        <Button
+                android:text="ذخیره تغییرات"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/saveEdits"
+                android:layout_below="@+id/confirmPassword" android:layout_alignEnd="@+id/textView13"
+                android:layout_marginTop="25dp"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/confirmPassword"
+                android:layout_marginTop="15dp" android:layout_below="@+id/newPassword"
+                android:layout_toStartOf="@+id/textView13" android:textAlignment="viewEnd"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/newPassword"
+                android:layout_below="@+id/passwordChange" android:layout_toStartOf="@+id/textView12"
+                android:textAlignment="viewEnd"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:ems="10"
+                android:id="@+id/nameValue"
+                android:textAlignment="viewEnd"
+                android:layout_alignBaseline="@+id/name" android:layout_alignBottom="@+id/name"
+                android:layout_toStartOf="@+id/name" android:layout_marginEnd="11dp"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/mobileValue"
+                android:textAlignment="viewEnd"
+                android:layout_alignBaseline="@+id/mobileNumber" android:layout_alignBottom="@+id/mobileNumber"
+                android:layout_alignStart="@+id/nameValue"/>
+    </RelativeLayout>
+</FrameLayout>

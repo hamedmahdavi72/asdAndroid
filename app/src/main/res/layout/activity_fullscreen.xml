@@ -1,0 +1,62 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<RelativeLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools = "http://schemas.android.com/tools" android:layout_width="match_parent"
+                android:layout_height = "match_parent" android:paddingLeft= "50px"
+                android:id="@+id/container"
+                android:paddingRight = "50px"
+                android:paddingTop = "20px"
+                android:paddingBottom = "20px" tools:context = "com.example.arya.agileapp.FullscreenActivity">
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:srcCompat="@android:color/darker_gray"
+            android:id="@+id/imageView" android:layout_alignParentTop="true"/>
+    <TextView android:text = "ورود" android:layout_width="wrap_content"
+              android:layout_height = "wrap_content"
+              android:id = "@+id/textview"
+              android:textSize = "35dp"
+              android:layout_alignParentTop = "true"
+              android:layout_centerHorizontal = "true" />
+
+
+    <EditText
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:id = "@+id/editText"
+            android:hint = "نام کاربری"
+            android:focusable = "true"
+            android:textColorHighlight = "#ff7eff15"
+            android:textColorHint = "#ffffff"
+            android:layout_marginTop = "46dp"
+            android:layout_alignParentLeft = "true"
+            android:layout_alignParentStart = "true"
+            android:layout_alignParentRight = "true"
+            android:layout_alignParentEnd = "true" android:textAlignment="viewEnd"
+            android:textColor="@android:color/background_light"/>
+
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:layout_below="@+id/editText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/editText"
+            android:layout_alignEnd="@+id/editText"
+            android:textColorHint="#ffffff"
+            android:hint="گذرواژه" android:textAlignment="viewEnd" android:textColor="@android:color/background_light"/>
+
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ورود"
+            android:id="@+id/button"
+            android:layout_marginTop="52dp"
+            android:layout_below="@+id/editText2" android:layout_alignRight="@+id/textview"
+            android:layout_alignEnd="@+id/textview"/>
+
+</RelativeLayout>
