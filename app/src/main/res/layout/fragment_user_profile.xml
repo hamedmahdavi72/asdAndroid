@@ -15,7 +15,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="73dp" android:id="@+id/nationalId"
-                android:background="@drawable/back"
                 android:layout_below="@+id/mobileNumber" android:layout_alignStart="@+id/mobileNumber"
                 android:textStyle="normal|bold"/>
         <TextView
@@ -23,31 +22,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="81dp" android:id="@+id/mobileNumber"
-                android:background="@drawable/back"
                 android:layout_below="@+id/name" android:layout_alignEnd="@+id/name" android:textStyle="normal|bold"/>
-        <TextView
-                android:text="مشخصات فردی"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/profileinfo" android:textStyle="normal|bold"
-                android:textSize="24sp" android:layout_alignParentTop="true" android:layout_toStartOf="@+id/name"
-                android:layout_marginTop="24dp"/>
     <TextView
-                android:text="نام و نام خانوادگی"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/back"
-                android:id="@+id/name"
-                android:textStyle="normal|bold" android:layout_below="@+id/profileinfo"
-                android:layout_alignParentEnd="true"/>
-        <TextView
-                android:text="گذرواژه جدید"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView12" android:layout_alignBaseline="@+id/newPassword"
-                android:layout_alignBottom="@+id/newPassword" android:layout_toStartOf="@+id/nationalId"/>
-        <TextView
                 android:text="تایید گذرواژه جدید"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,7 +61,8 @@
                 android:id="@+id/nameValue"
                 android:textAlignment="viewEnd"
                 android:layout_alignBaseline="@+id/name" android:layout_alignBottom="@+id/name"
-                android:layout_toStartOf="@+id/name" android:layout_marginEnd="11dp"/>
+                android:layout_toStartOf="@+id/name" android:layout_marginEnd="11dp"
+                android:textColor="@android:color/black"/>
         <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,7 +78,13 @@
             android:background="@drawable/back"
             android:id="@+id/nationalIdValue"
             android:layout_alignBaseline="@+id/nationalId" android:layout_alignBottom="@+id/nationalId"
-            android:layout_alignEnd="@+id/mobileValue"/>
+            android:layout_alignEnd="@+id/mobileValue" android:textColor="@android:color/black"/>
+    <TextView
+                android:text="گذرواژه جدید"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView12"
+                android:layout_above="@+id/confirmPassword" android:layout_toStartOf="@+id/nationalId"/>
     <TextView
             android:text="تغییر گذرواژه"
             android:layout_width="wrap_content"
@@ -109,5 +92,28 @@
             android:id="@+id/passwordChange" android:textStyle="normal|bold"
             android:textSize="18sp"
             android:layout_marginTop="38dp"
-            android:layout_below="@+id/nationalIdValue" android:layout_alignStart="@+id/profileinfo"/>
+            android:layout_below="@+id/nationalIdValue" android:layout_alignEnd="@+id/textView12"/>
+    <ImageView
+            app:srcCompat="@drawable/users"
+            android:id="@+id/imageView"
+            android:scaleType="fitXY"
+            android:background="@drawable/users"
+            android:layout_width="80dp" android:layout_height="80dp" android:layout_below="@+id/profileinfo"
+            android:layout_toEndOf="@+id/profileinfo" android:layout_marginTop="24dp"/>
+    <TextView
+            android:text="نام و نام خانوادگی"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:textStyle="normal|bold"
+            android:layout_below="@+id/imageView" android:layout_alignEnd="@+id/imageView"
+            android:layout_marginTop="43dp"/>
+    <TextView
+            android:text="مشخصات فردی"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profileinfo" android:textStyle="normal|bold"
+            android:textSize="24sp"
+            android:layout_marginTop="72dp"
+            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
 </RelativeLayout>

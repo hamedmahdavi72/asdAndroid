@@ -1,35 +1,50 @@
 <?xml version = "1.0" encoding = "utf-8"?>
-<LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools = "http://schemas.android.com/tools" android:layout_width="match_parent"
-              android:layout_height = "match_parent"
-              android:id="@+id/container"
-              tools:context = "com.example.arya.agileapp.FullscreenActivity" android:orientation="horizontal">
+<RelativeLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools = "http://schemas.android.com/tools"
+                android:id="@+id/container"
+                tools:context = "com.example.arya.agileapp.FullscreenActivity"
+                android:layout_height="match_parent" android:layout_width="match_parent" android:baselineAligned="false"
+                android:background="@mipmap/intro">
 
 
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" android:id="@+id/login">
-
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-                android:layout_marginTop="148dp" android:id="@+id/username" android:textAlignment="center"
-                tools:text="نام کاربری"/>
-        <Button
-                android:text="ورود"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_below="@+id/password"
-                android:layout_centerHorizontal="true" android:layout_marginTop="35dp" android:id="@+id/button"/>
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:id="@+id/password" android:textAlignment="center" android:hint="گذرواژه"
-                android:layout_below="@+id/username" android:layout_alignStart="@+id/username"
-                android:layout_marginTop="14dp"/>
-    </RelativeLayout>
-</LinearLayout>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/username" android:textAlignment="center" android:hint="نام کاربری"
+            android:layout_below="@+id/imageButton2" android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp" android:textColor="@android:color/white"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/password" android:hint="گذرواژه" android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/imageButton3" android:layout_alignStart="@+id/username"
+            android:textColor="@android:color/black"/>
+    <Button
+            android:text="ورود"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            android:background="@drawable/back"
+            android:elevation="0dp"
+            android:layout_marginTop="55dp"
+            android:layout_below="@+id/password" android:layout_centerHorizontal="true" android:textSize="24sp"
+            android:textStyle="normal|bold" android:textColor="@android:color/white"/>
+    <ImageView
+            android:layout_height="wrap_content" app:srcCompat="@drawable/pswd"
+            android:layout_marginTop="121dp" android:id="@+id/imageButton3"
+            android:layout_width="wrap_content" android:scaleType="fitXY" android:visibility="visible"
+            android:theme="@style/AppTheme" android:layout_below="@+id/username"
+            android:layout_centerHorizontal="true" android:background="@drawable/pswd"/>
+    <ImageView
+            app:srcCompat="@drawable/usrusr" android:id="@+id/imageButton2"
+            android:layout_weight="2"
+            android:layout_marginTop="124dp" android:layout_height="wrap_content" android:layout_width="wrap_content"
+            android:scaleType="fitXY"
+            android:visibility="visible" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+            android:background="@drawable/usrusr"/>
+</RelativeLayout>
