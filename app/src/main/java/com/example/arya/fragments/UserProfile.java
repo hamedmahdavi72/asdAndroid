@@ -49,6 +49,18 @@ public class UserProfile extends FragmentActivity {
             nameValue.setText(info.getString("firstName")+" "+ info.getString("lastName"));
             mobileValue.setText(info.getString("mobileNumber"));
             nationalIdValue.setText(info.getString("nationalId"));
+            if(info.has("supportedInsuranceCompanies")){
+                ImageView profileImage = (ImageView) findViewById(R.id.profileIcon);
+                profileImage.setImageResource(0);
+                profileImage.setImageResource(R.drawable.profpic);
+                profileImage.setBackground(getResources().getDrawable(R.drawable.profpic));
+            }
+            else {
+                ImageView profileImage = (ImageView) findViewById(R.id.profileIcon);
+                profileImage.setImageResource(0);
+                profileImage.setImageResource(R.drawable.users1);
+                profileImage.setBackground(getResources().getDrawable(R.drawable.users1));
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }

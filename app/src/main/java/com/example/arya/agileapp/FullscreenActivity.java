@@ -3,17 +3,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.*;
 import com.android.volley.*;
 import com.android.volley.toolbox.*;
 import com.example.arya.fragments.UserProfile;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
+
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ import java.util.HashMap;
  */
 public class FullscreenActivity extends Activity {
 
-        Button b1;
+        TextView b1;
         EditText ed1,ed2;
         HashMap<String, String> extraData = new HashMap<>();
         ImageView cris;
@@ -35,7 +35,7 @@ public class FullscreenActivity extends Activity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_fullscreen);
 
-            b1 = (Button)findViewById(R.id.button);
+            b1 = (TextView)findViewById(R.id.login);
             ed1 = (EditText)findViewById(R.id.username);
             ed2 = (EditText)findViewById(R.id.password);
             CookieHandler.setDefault(new CookieManager());

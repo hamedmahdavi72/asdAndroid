@@ -94,10 +94,8 @@
             android:layout_marginTop="38dp"
             android:layout_below="@+id/nationalIdValue" android:layout_alignEnd="@+id/textView12"/>
     <ImageView
-            app:srcCompat="@drawable/users"
-            android:id="@+id/imageView"
+            android:id="@+id/profileIcon"
             android:scaleType="fitXY"
-            android:background="@drawable/users"
             android:layout_width="80dp" android:layout_height="80dp" android:layout_below="@+id/profileinfo"
             android:layout_toEndOf="@+id/profileinfo" android:layout_marginTop="24dp"/>
     <TextView
@@ -106,7 +104,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/name"
             android:textStyle="normal|bold"
-            android:layout_below="@+id/imageView" android:layout_alignEnd="@+id/imageView"
+            android:layout_below="@+id/profileIcon" android:layout_alignEnd="@+id/profileIcon"
             android:layout_marginTop="43dp"/>
     <TextView
             android:text="مشخصات فردی"
