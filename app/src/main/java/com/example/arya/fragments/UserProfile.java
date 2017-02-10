@@ -1,13 +1,12 @@
 package com.example.arya.fragments;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -66,11 +65,44 @@ public class UserProfile extends FragmentActivity {
         }
     }
 
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.userprofilemenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.userProfile:
+                //newGame();
+                return true;
+            case R.id.search:
+                loadSearchPage();
+                return true;
+            case R.id.userMessages:
+                //showHelp();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.profile, new PlaceholderFragment()).commit();
+    }
+
+
+    private void loadSearchPage() {
+        Intent intent = new Intent(getApplicationContext(), UserSearch.class);
+        startActivity(intent);
     }
 
     public static class PlaceholderFragment extends Fragment{

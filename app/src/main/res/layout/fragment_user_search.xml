@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:tools="http://schemas.android.com/tools"
+              tools:context="com.example.arya.fragments.UserSearch"
+              android:id="@+id/user_search_doctor" android:baselineAligned="false"
+              android:background="@android:color/darker_gray">
+
+    <TextView
+            android:text="جستجوی پزشکان"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/searchTitle" android:textAlignment="center"
+            android:textStyle="normal|bold" android:textSize="18sp"/>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/searchPanel">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="208dp" android:layout_weight="1.69"
+                android:layout_below="@+id/specialityValue" android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true">
+
+            <CheckBox
+                    android:text="بانک صادرات"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/insurance4" android:textStyle="normal|bold"
+                    android:layout_alignBaseline="@+id/insurance2" android:layout_alignBottom="@+id/insurance2"
+                    android:layout_toStartOf="@+id/insurance2"/>
+            <CheckBox
+                    android:text="سپه"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/insurance2"
+                    android:textStyle="normal|bold"
+                    android:layout_alignBaseline="@+id/insurance1" android:layout_alignBottom="@+id/insurance1"
+                    android:layout_toStartOf="@+id/insurance1"/>
+            <CheckBox
+                    android:text="تامین اجتماعی"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/insurance3"
+                    android:textStyle="normal|bold"
+                    android:layout_below="@+id/insurance2" android:layout_alignEnd="@+id/insurance1"/>
+            <CheckBox
+                    android:text="پارسیان"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:id="@+id/insurance1" android:textStyle="normal|bold"
+                    android:layout_marginEnd="64dp"
+                    android:layout_below="@+id/insuranceTitle" android:layout_alignParentEnd="true"/>
+            <TextView
+                    android:text="بیمه های تحت پوشش"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp" android:id="@+id/insuranceTitle"
+                    android:textStyle="normal|bold" android:textSize="18sp"
+                    android:layout_alignParentTop="true" android:layout_alignEnd="@+id/insurance1"/>
+            <Button
+                    android:text="جستجو"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/searchButton"
+                    android:layout_marginTop="13dp" android:layout_below="@+id/insurance3"
+                    android:layout_alignEnd="@+id/insurance3"/>
+        </RelativeLayout>
+        <EditText
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:ems="10"
+                android:id="@+id/specialityValue" android:textAlignment="viewEnd"
+                android:hint="تخصص" android:layout_below="@+id/searchAreaName" android:layout_alignParentEnd="true"
+                android:layout_marginEnd="61dp"/>
+        <EditText
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/searchAreaName" android:textAlignment="viewEnd"
+                android:hint="شماره منطقه"
+                android:layout_below="@+id/searchNameValue" android:layout_alignStart="@+id/specialityValue"/>
+        <EditText
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:ems="10"
+                android:id="@+id/searchNameValue" android:textAlignment="viewEnd"
+                android:hint="نام و نام خانوادگی" android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/searchAreaName"/>
+    </RelativeLayout>
+</LinearLayout>
