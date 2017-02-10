@@ -26,6 +26,8 @@ public class UserProfile extends FragmentActivity {
     private TextView mobileValue;
     private TextView nationalIdValue;
     private ImageView cris;
+    private boolean isCustomer = true;
+    private boolean seenOnce = false;
 
 
 
@@ -53,8 +55,10 @@ public class UserProfile extends FragmentActivity {
                 profileImage.setImageResource(0);
                 profileImage.setImageResource(R.drawable.profpic);
                 profileImage.setBackground(getResources().getDrawable(R.drawable.profpic));
+                isCustomer = false;
             }
             else {
+                isCustomer = true;
                 ImageView profileImage = (ImageView) findViewById(R.id.profileIcon);
                 profileImage.setImageResource(0);
                 profileImage.setImageResource(R.drawable.users1);
@@ -65,6 +69,25 @@ public class UserProfile extends FragmentActivity {
         }
     }
 
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+//        menu.clear();
+        if(isCustomer && !seenOnce){
+            menu.add(Menu.NONE, 91110258, menu.NONE,  "جستجوی پزشکان");
+            seenOnce = true;
+            return true;
+        }
+        else {
+            if(!isCustomer && !seenOnce){
+                menu.add(Menu.NONE, 91110259, menu.NONE,  "قرار ملاقات های تایید شده");
+                menu.add(Menu.NONE, 91110260, menu.NONE,  "قرارهای ملاقات");
+                seenOnce = true;
+                return true;
+            }
+        }
+        return true;
+    }
 
 
     @Override
@@ -78,13 +101,16 @@ public class UserProfile extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.userProfile:
+            case R.id.errorReporting:
                 //newGame();
                 return true;
-            case R.id.search:
+            case 91110258:
                 loadSearchPage();
                 return true;
-            case R.id.userMessages:
+            case 91110259:
+                //showHelp();
+                return true;
+            case 91110260:
                 //showHelp();
                 return true;
             default:
