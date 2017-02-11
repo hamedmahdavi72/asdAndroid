@@ -6,19 +6,18 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
+import android.view.View;
+import android.widget.*;
+import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.arya.agileapp.R;
+import com.example.arya.utils.date.JalaliCalendar;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,6 +32,10 @@ public class DoctorPageAsUser extends FragmentActivity {
 
     String docId;
 
+    private CheckBox first, second, third;
+    private Button send;
+    private TextView firstFrom, firstTo, secondFrom, secondTo, thirdFrom, thirdTo;
+
     public DoctorPageAsUser() {
         // Required empty public constructor
     }
@@ -43,7 +46,24 @@ public class DoctorPageAsUser extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_doctor_page_as_user);
 
+        first = (CheckBox) findViewById(R.id.firstConfirm);
+        second = (CheckBox) findViewById(R.id.secondConfirm);
+        third = (CheckBox) findViewById(R.id.thirdConfirm);
+
+        send = (Button) findViewById(R.id.sendRequest);
+
         docId = getIntent().getStringExtra("doctorId");
+
+
+
+        firstFrom = (TextView) findViewById(R.id.firstFromH);
+        firstTo = (TextView) findViewById(R.id.firstToH);
+
+        secondFrom = (TextView) findViewById(R.id.secondFromH);
+        secondTo = (TextView) findViewById(R.id.secondToH);
+
+        thirdFrom = (TextView) findViewById(R.id.thirdFromH);
+        thirdTo = (TextView) findViewById(R.id.thirdToH);
 
         //first
         List<Integer> firstDaySpinner =  new ArrayList<>();
@@ -157,6 +177,12 @@ public class DoctorPageAsUser extends FragmentActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requestAppointments();
+            }
+        });
     }
 
     @Override
@@ -219,7 +245,124 @@ public class DoctorPageAsUser extends FragmentActivity {
         startActivity(intent);
     }
 
+
+    public void sendAppointMentRequests(final JSONObject payload){
+
+        new AsyncTask<Void,Void,Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                String URL = "http://10.0.2.2:9000/saveAppointments/";
+                RequestQueue queue = Volley.newRequestQueue(getApplication());
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                if(response.equalsIgnoreCase("ok")){
+                                    Toast.makeText(getApplicationContext(),"درخواست با موفقیت ثبت شد.", Toast.LENGTH_LONG).show();
+                                    DoctorPageAsUser.this.finish();
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(),"خطای داخلی!", Toast.LENGTH_LONG).show();
+                    }
+                })
+
+                {
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json; charset=utf-8";
+                    }
+
+                    @Override
+                    public byte[] getBody() throws AuthFailureError {
+                        return payload.toString().getBytes();
+                    }
+                };
+                queue.add(stringRequest);
+                return null;
+            }
+        }.execute();
+    }
+
     public void requestAppointments(){
 
+        JalaliCalendar jalaliCalendar;
+        JSONArray jsonArray = new JSONArray();
+        JSONObject appointmentRequests = new JSONObject();
+
+        Spinner sp11, sp12, sp13, sp21, sp22, sp23, sp31, sp32, sp33;
+
+        sp11 = (Spinner) findViewById(R.id.firstDaySpinner);
+        sp12 = (Spinner) findViewById(R.id.firstMonthSpinner);
+        sp13 = (Spinner) findViewById(R.id.firstYearSpinner);
+
+        sp21 = (Spinner) findViewById(R.id.secondDaySpinner);
+        sp22 = (Spinner) findViewById(R.id.secondMonthSpinner);
+        sp23 = (Spinner) findViewById(R.id.secondYearSpinner);
+
+        sp31 = (Spinner) findViewById(R.id.thirdDaySpinner);
+        sp32 = (Spinner) findViewById(R.id.thirdMonthSpinner);
+        sp33 = (Spinner) findViewById(R.id.thirdYearSpinner);
+
+        try {
+            appointmentRequests.put("doctorUsername", docId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(first.isChecked()){
+            JSONObject first = new JSONObject();
+            try {
+                first.put("fromHour", firstFrom.getText());
+                first.put("toHour", firstTo.getText().toString());
+                jalaliCalendar = new JalaliCalendar();
+                jalaliCalendar.set(16, Integer.parseInt(sp12.getSelectedItem().toString()), Integer.parseInt(sp11.getSelectedItem().toString()));// year, month, day
+                first.put("date", jalaliCalendar.getTime());
+                jsonArray.put(first);
+                Log.d("data", jsonArray.toString());
+            } catch (JSONException e) {
+                Toast.makeText(getApplicationContext(),"خطای داخلی!", Toast.LENGTH_LONG).show();
+            }
+        }
+        if(second.isChecked()){
+            JSONObject second = new JSONObject();
+            try {
+                second.put("fromHour", secondFrom.getText().toString());
+                second.put("toHour", secondTo.getText().toString());
+                jalaliCalendar = new JalaliCalendar();
+                jalaliCalendar.set(Integer.parseInt(sp23.getSelectedItem().toString())
+                        , Integer.parseInt(sp22.getSelectedItem().toString(),
+                                Integer.parseInt(sp21.getSelectedItem().toString())));// year, month, day
+                second.put("date", jalaliCalendar.getTime());
+                jsonArray.put(second);
+            } catch (JSONException e) {
+                Toast.makeText(getApplicationContext(),"خطای داخلی!", Toast.LENGTH_LONG).show();
+            }
+        }
+        if(third.isChecked()){
+            JSONObject third = new JSONObject();
+            try {
+                third.put("fromHour", thirdFrom.getText().toString());
+                third.put("toHour", thirdTo.getText().toString());
+                jalaliCalendar = new JalaliCalendar();
+                jalaliCalendar.set(Integer.parseInt(sp33.getSelectedItem().toString())
+                        , Integer.parseInt(sp32.getSelectedItem().toString(),
+                                Integer.parseInt(sp31.getSelectedItem().toString())));// year, month, day
+                third.put("date", jalaliCalendar.getTime());
+                jsonArray.put(third);
+            } catch (JSONException e) {
+                Toast.makeText(getApplicationContext(),"خطای داخلی!", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        try {
+            appointmentRequests.put("intervals", jsonArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        sendAppointMentRequests(appointmentRequests);
     }
 }

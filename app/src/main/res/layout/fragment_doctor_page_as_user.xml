@@ -42,7 +42,8 @@
                 android:text="ارسال درخواست"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:layout_below="@+id/thirdRequest"
-                android:layout_centerHorizontal="true" android:layout_marginTop="66dp" android:id="@+id/sendRequest"/>
+                android:layout_centerHorizontal="true" android:layout_marginTop="66dp" android:id="@+id/sendRequest"
+        />
         <Spinner
                 android:layout_height="wrap_content"
                 android:id="@+id/firstDaySpinner"
@@ -90,5 +91,72 @@
                 android:layout_alignBaseline="@+id/secondMonthSpinner"
                 android:layout_alignBottom="@+id/secondMonthSpinner"
                 android:layout_toStartOf="@+id/secondMonthSpinner"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/firstFromH"
+                android:hint="از ساعت" android:textAlignment="center" android:layout_below="@+id/firstRequest"
+                android:layout_alignEnd="@+id/firstRequest" android:layout_toEndOf="@+id/firstDaySpinner"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/firstToH" android:hint="تا ساعت"
+                android:layout_alignBaseline="@+id/firstFromH" android:layout_alignBottom="@+id/firstFromH"
+                android:layout_alignEnd="@+id/firstDaySpinner" android:layout_toEndOf="@+id/firstMonthSpinner"
+                android:textAlignment="center"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_below="@+id/secondDaySpinner" android:layout_alignEnd="@+id/thirdRequest"
+                android:id="@+id/secondFromH" android:layout_alignStart="@+id/secondRequest" android:hint="از ساعت"
+                android:textAlignment="center"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_below="@+id/secondDaySpinner" android:layout_alignEnd="@+id/thirdDaySpinner"
+                android:id="@+id/secondToH" android:layout_toEndOf="@+id/secondMonthSpinner" android:hint="تا ساعت"
+                android:textAlignment="center"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_below="@+id/thirdRequest" android:layout_alignEnd="@+id/thirdRequest"
+                android:id="@+id/thirdFromH" android:layout_alignStart="@+id/thirdRequest" android:hint="از ساعت"
+                android:textAlignment="center"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_below="@+id/thirdDaySpinner" android:layout_alignEnd="@+id/thirdDaySpinner"
+                android:id="@+id/thirdToH" android:layout_toEndOf="@+id/thirdMonthSpinner"
+                android:textAlignment="center" android:hint="تا ساعت"/>
+        <CheckBox
+                android:text="ذخیره"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/thirdConfirm"
+                android:layout_alignBottom="@+id/thirdToH" android:layout_toStartOf="@+id/thirdToH"/>
+        <CheckBox
+                android:text="ذخیره"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/firstConfirm"
+                android:layout_alignBottom="@+id/firstToH" android:layout_toStartOf="@+id/firstToH"/>
+        <CheckBox
+                android:text="ذخیره"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/secondConfirm"
+                android:layout_alignBottom="@+id/secondToH" android:layout_toStartOf="@+id/secondToH"/>
     </RelativeLayout>
 </LinearLayout>
