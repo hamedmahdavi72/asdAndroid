@@ -1,12 +1,10 @@
 package com.example.arya.fragments;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
@@ -76,11 +74,9 @@ public class UserSearchResults extends FragmentActivity {
 
                 // selected item
                 final String selected = doctorIds[position];
-                Toast toast = Toast.makeText(getApplicationContext(), selected, Toast.LENGTH_SHORT);
-                toast.show();
+                /*Toast toast = Toast.makeText(getApplicationContext(), selected, Toast.LENGTH_SHORT);
+                toast.show();*/
                 new AsyncTask<Void, Void, Void>() {
-                    JSONObject jsonBody = new JSONObject();
-
                     public Void doInBackground(Void... a) {
                         goToDoctor(selected);
                         return null;
@@ -91,21 +87,10 @@ public class UserSearchResults extends FragmentActivity {
     }
 
     public void goToDoctor(String docId){
-        String URL = "http://10.0.2.2:9000/doctors/page/"+docId;
-        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest editRequest = new StringRequest(Request.Method.GET, URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
 
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // error
-            }
-        });
-        queue.add(editRequest);
+        Intent intent = new Intent(getApplicationContext(), DoctorPageAsUser.class);
+        intent.putExtra("doctorId", docId);
+        startActivity(intent);
     }
 }
 

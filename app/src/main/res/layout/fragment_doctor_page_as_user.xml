@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="@android:color/darker_gray">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:text="درخواست رزرو وقت"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" android:layout_marginTop="21dp" android:id="@+id/reserveAppointMent"
+                android:textStyle="normal|bold" android:textAlignment="center"
+                android:textColor="@android:color/black" android:textSize="18sp"/>
+        <TextView
+                android:text="درخواست 3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="58dp"
+                android:id="@+id/thirdRequest" android:textStyle="normal|bold" android:textAlignment="center"
+                android:textColor="@android:color/black" android:layout_below="@+id/secondRequest"
+                android:layout_alignStart="@+id/secondRequest"/>
+        <TextView
+                android:text="درخواست 1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="14dp" android:layout_marginTop="40dp"
+                android:id="@+id/firstRequest" android:textStyle="normal|bold" android:textAlignment="center"
+                android:textColor="@android:color/black" android:layout_below="@+id/reserveAppointMent"
+                android:layout_alignParentEnd="true"/>
+        <TextView
+                android:text="درخواست 2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="66dp"
+                android:id="@+id/secondRequest" android:textAlignment="center" android:textStyle="normal|bold"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/firstRequest" android:layout_alignStart="@+id/firstRequest"/>
+        <Button
+                android:text="ارسال درخواست"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_below="@+id/thirdRequest"
+                android:layout_centerHorizontal="true" android:layout_marginTop="66dp" android:id="@+id/sendRequest"/>
+        <Spinner
+                android:layout_height="wrap_content"
+                android:id="@+id/firstDaySpinner"
+                android:layout_alignBottom="@+id/firstRequest" android:layout_toStartOf="@+id/firstRequest"
+                android:layout_marginEnd="17dp" android:layout_width="90dp"/>
+        <Spinner
+                android:layout_height="wrap_content"
+                android:id="@+id/firstMonthSpinner" android:layout_alignBaseline="@+id/firstDaySpinner"
+                android:layout_alignBottom="@+id/firstDaySpinner" android:layout_toStartOf="@+id/firstDaySpinner"
+                android:layout_width="90dp"/>
+        <Spinner
+                android:layout_height="wrap_content"
+                android:id="@+id/firstYearSpinner" android:layout_alignBaseline="@+id/firstMonthSpinner"
+                android:layout_alignBottom="@+id/firstMonthSpinner" android:layout_toStartOf="@+id/firstMonthSpinner"
+                android:layout_width="100dp"/>
+        <Spinner
+                android:layout_height="wrap_content"
+                android:id="@+id/secondDaySpinner" android:layout_alignBaseline="@+id/secondRequest"
+                android:layout_alignBottom="@+id/secondRequest" android:layout_toEndOf="@+id/firstMonthSpinner"
+                android:layout_width="90dp"/>
+        <Spinner
+                android:layout_height="wrap_content"
+                android:id="@+id/secondMonthSpinner"
+                android:layout_alignBaseline="@+id/secondDaySpinner" android:layout_alignBottom="@+id/secondDaySpinner"
+                android:layout_toStartOf="@+id/secondDaySpinner" android:layout_width="90dp"/>
+        <Spinner
+                android:layout_height="wrap_content"
+                android:id="@+id/thirdDaySpinner" android:layout_above="@+id/sendRequest"
+                android:layout_toEndOf="@+id/secondMonthSpinner" android:layout_width="90dp"/>
+        <Spinner
+                android:layout_height="wrap_content"
+                android:id="@+id/thirdMonthSpinner" android:layout_alignBaseline="@+id/thirdDaySpinner"
+                android:layout_alignBottom="@+id/thirdDaySpinner" android:layout_toStartOf="@+id/thirdDaySpinner"
+                android:layout_width="90dp"/>
+        <Spinner
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/thirdYearSpinner"
+                android:layout_alignBaseline="@+id/thirdMonthSpinner"
+                android:layout_alignBottom="@+id/thirdMonthSpinner" android:layout_toStartOf="@+id/thirdMonthSpinner"/>
+        <Spinner
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/secondYearSpinner"
+                android:layout_alignBaseline="@+id/secondMonthSpinner"
+                android:layout_alignBottom="@+id/secondMonthSpinner"
+                android:layout_toStartOf="@+id/secondMonthSpinner"/>
+    </RelativeLayout>
+</LinearLayout>
