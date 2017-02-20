@@ -308,61 +308,45 @@ public class DoctorPageAsUser extends FragmentActivity {
 
         try {
             appointmentRequests.put("doctorUsername", docId);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            if (first.isChecked()) {
+                JSONObject first = new JSONObject();
 
-        if(first.isChecked()){
-            JSONObject first = new JSONObject();
-            try {
                 first.put("fromHour", firstFrom.getText());
                 first.put("toHour", firstTo.getText().toString());
                 jalaliCalendar = new JalaliCalendar();
-                jalaliCalendar.set(16, Integer.parseInt(sp12.getSelectedItem().toString()), Integer.parseInt(sp11.getSelectedItem().toString()));// year, month, day
+                jalaliCalendar.set(16,
+                        Integer.parseInt(sp12.getSelectedItem().toString()),
+                        Integer.parseInt(sp11.getSelectedItem().toString()));// year, month, day
                 first.put("date", jalaliCalendar.getTime());
                 jsonArray.put(first);
-                Log.d("data", jsonArray.toString());
-            } catch (JSONException e) {
-                Toast.makeText(getApplicationContext(),"خطای داخلی!", Toast.LENGTH_LONG).show();
             }
-        }
-        if(second.isChecked()){
-            JSONObject second = new JSONObject();
-            try {
+            if (second.isChecked()) {
+                JSONObject second = new JSONObject();
                 second.put("fromHour", secondFrom.getText().toString());
                 second.put("toHour", secondTo.getText().toString());
                 jalaliCalendar = new JalaliCalendar();
                 jalaliCalendar.set(Integer.parseInt(sp23.getSelectedItem().toString())
-                        , Integer.parseInt(sp22.getSelectedItem().toString(),
-                                Integer.parseInt(sp21.getSelectedItem().toString())));// year, month, day
+                        , Integer.parseInt(sp22.getSelectedItem().toString()),
+                        Integer.parseInt(sp21.getSelectedItem().toString()));// year, month, day
                 second.put("date", jalaliCalendar.getTime());
                 jsonArray.put(second);
-            } catch (JSONException e) {
-                Toast.makeText(getApplicationContext(),"خطای داخلی!", Toast.LENGTH_LONG).show();
             }
-        }
-        if(third.isChecked()){
-            JSONObject third = new JSONObject();
-            try {
+            if (third.isChecked()) {
+                JSONObject third = new JSONObject();
                 third.put("fromHour", thirdFrom.getText().toString());
                 third.put("toHour", thirdTo.getText().toString());
                 jalaliCalendar = new JalaliCalendar();
                 jalaliCalendar.set(Integer.parseInt(sp33.getSelectedItem().toString())
-                        , Integer.parseInt(sp32.getSelectedItem().toString(),
-                                Integer.parseInt(sp31.getSelectedItem().toString())));// year, month, day
+                        , Integer.parseInt(sp32.getSelectedItem().toString()),
+                        Integer.parseInt(sp31.getSelectedItem().toString()));// year, month, day
                 third.put("date", jalaliCalendar.getTime());
                 jsonArray.put(third);
-            } catch (JSONException e) {
-                Toast.makeText(getApplicationContext(),"خطای داخلی!", Toast.LENGTH_LONG).show();
             }
-        }
-
-        try {
             appointmentRequests.put("intervals", jsonArray);
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
-
+        catch (Exception e) {
+            Toast.makeText(getApplicationContext(),"خطای داخلی!", Toast.LENGTH_LONG).show();
+        }
         sendAppointMentRequests(appointmentRequests);
     }
 }

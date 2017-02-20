@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/issue_report_layout">
+
+        <TextView
+                android:text="موضوع"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true" android:layout_marginEnd="22dp" android:layout_marginTop="40dp"
+                android:id="@+id/subjectTitle" android:textStyle="normal|bold" android:textSize="24sp"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_below="@+id/subjectTitle"
+                android:id="@+id/issue_subject"/>
+        <TextView
+                android:text="توضیحات"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_below="@+id/issue_subject"
+                android:layout_alignEnd="@+id/subjectTitle" android:layout_marginTop="44dp"
+                android:id="@+id/issue_report_title" android:textStyle="normal|bold" android:textSize="24sp"/>
+        <EditText
+                android:layout_width="300dp"
+                android:inputType="text"
+                android:ems="10"
+                android:layout_below="@+id/issue_report_title" android:layout_alignEnd="@+id/issue_report_title"
+                android:id="@+id/issue_report_value" android:textSize="18sp" android:textAlignment="viewEnd"
+                android:layout_height="150dp"/>
+        <Button
+                android:text="ارسال"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sendIssue" android:layout_below="@+id/issue_report_value"
+                android:layout_alignEnd="@+id/issue_report_value"/>
+    </RelativeLayout>

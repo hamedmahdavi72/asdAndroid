@@ -15,6 +15,7 @@ import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.arya.agileapp.R;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -102,7 +103,7 @@ public class UserProfile extends FragmentActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.errorReporting:
-                //newGame();
+                loadIssueReportPage();
                 return true;
             case 91110258:
                 loadSearchPage();
@@ -112,6 +113,9 @@ public class UserProfile extends FragmentActivity {
                 return true;
             case 91110260:
                 //showHelp();
+                return true;
+            case R.id.userMessages:
+                getUserMessages();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -125,6 +129,58 @@ public class UserProfile extends FragmentActivity {
                 .replace(R.id.profile, new PlaceholderFragment()).commit();
     }
 
+
+    private void getUserMessages(){
+        new AsyncTask<Void,Void,Void>() {
+            public Void doInBackground(Void... a) {
+                String URL2 = "http://10.0.2.2:9000/getMessages";
+                RequestQueue queue = Volley.newRequestQueue(getApplication());
+                final StringRequest stringRequest2 = new StringRequest(Request.Method.GET, URL2,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                // your response
+                                try {
+                                    JSONArray res = new JSONArray(response.toString());
+                                    loadUserMessagePage(res);
+
+                                } catch (JSONException e) {
+                                    loadUserMessagePage(response.toString());
+                                }
+
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                    }
+                })
+
+                {
+                };
+                queue.add(stringRequest2);
+                return null;
+            }
+        }.execute();
+    }
+
+
+    private void loadIssueReportPage(){
+        Intent intent = new Intent(getApplicationContext(), UserIssueReport.class);
+        startActivity(intent);
+    }
+
+    private void loadUserMessagePage(JSONArray userMessages){
+        Intent intent = new Intent(getApplicationContext(), UserMessages.class);
+        intent.putExtra("userMessages", userMessages.toString());
+        startActivity(intent);
+    }
+
+    private void loadUserMessagePage(String userMessages){
+        Intent intent = new Intent(getApplicationContext(), UserMessages.class);
+        intent.putExtra("userMessages", userMessages.toString());
+        startActivity(intent);
+    }
 
     private void loadSearchPage() {
         Intent intent = new Intent(getApplicationContext(), UserSearch.class);

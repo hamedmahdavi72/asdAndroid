@@ -70,6 +70,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+                android:name="com.example.arya.fragments.UserMessages"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:label="پیام های شما">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.example.arya.fragments.UserIssueReport"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:label="گزارش مشکلات">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
