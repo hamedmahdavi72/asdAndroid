@@ -109,6 +109,7 @@ public class UserProfile extends FragmentActivity {
                 loadSearchPage();
                 return true;
             case 91110259:
+                getAcceptedAppointments();
                 //showHelp();
                 return true;
             case 91110260:
@@ -120,6 +121,47 @@ public class UserProfile extends FragmentActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+
+    public void loadAcceptedAppointmentsPage(JSONArray jsonArray){
+        Intent intent = new Intent(getApplicationContext(), DoctorAcceptedAppointments.class);
+        intent.putExtra("acceptedAppointments", jsonArray.toString());
+        startActivity(intent);
+    }
+
+    public void getAcceptedAppointments(){
+        new AsyncTask<Void,Void,Void>() {
+            public Void doInBackground(Void... a) {
+                String URL2 = "http://10.0.2.2:9000/doctor/getDoctorAppointments";
+                RequestQueue queue = Volley.newRequestQueue(getApplication());
+                final StringRequest stringRequest2 = new StringRequest(Request.Method.GET, URL2,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                // your response
+                                try {
+                                    JSONArray res = new JSONArray(response.toString());
+                                    loadAcceptedAppointmentsPage(res);
+
+                                } catch (JSONException e) {
+                                    loadUserMessagePage(response.toString());
+                                }
+
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                    }
+                })
+
+                {
+                };
+                queue.add(stringRequest2);
+                return null;
+            }
+        }.execute();
     }
 
     @Override
