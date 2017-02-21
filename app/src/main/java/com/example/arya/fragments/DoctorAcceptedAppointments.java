@@ -35,7 +35,14 @@ public class DoctorAcceptedAppointments extends FragmentActivity {
 
             for (int i = 0; i < acceptedAppointments.length(); i++) {
                 JSONObject jsonObject = new JSONObject(acceptedAppointments.get(i).toString());
-                results[i] = "\n\nCustomer Username: "+jsonObject.getString("customerUsername") + "\n\nAppointment Date: " + new Date(new Long(jsonObject.getString("appointmentDate")))+"\n\n";
+                if(jsonObject.has("customerUsername")){
+                    results[i] = "\n\nCustomer Username: "+jsonObject.getString("customerUsername") + "\n\nAppointment Date: " + new Date(new Long(jsonObject.getString("appointmentDate")))+"\n\n";
+                }
+                else {
+                    if(jsonObject.has("doctorUsername")){
+                        results[i] = "\n\nDoctor Username: "+jsonObject.getString("doctorUsername") + "\n\nAppointment Date: " + new Date(new Long(jsonObject.getString("appointmentDate")))+"\n\n";
+                    }
+                }
             }
 
             // Create a List from String Array elements

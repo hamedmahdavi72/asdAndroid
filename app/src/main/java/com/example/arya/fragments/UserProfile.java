@@ -76,6 +76,7 @@ public class UserProfile extends FragmentActivity {
 //        menu.clear();
         if(isCustomer && !seenOnce){
             menu.add(Menu.NONE, 91110258, menu.NONE,  "جستجوی پزشکان");
+            menu.add(Menu.NONE, 91110261, menu.NONE,  "ملاقاتهای کاربر");
             seenOnce = true;
             return true;
         }
@@ -118,6 +119,9 @@ public class UserProfile extends FragmentActivity {
             case R.id.userMessages:
                 getUserMessages();
                 return true;
+            case 91110261:
+                getAcceptedAppointments();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -130,10 +134,11 @@ public class UserProfile extends FragmentActivity {
         startActivity(intent);
     }
 
-    public void getAcceptedAppointments(){
+
+    private void requestForAcceptedAppointments(final String URL){
         new AsyncTask<Void,Void,Void>() {
             public Void doInBackground(Void... a) {
-                String URL2 = "http://10.0.2.2:9000/doctor/getDoctorAppointments";
+                String URL2 = URL;
                 RequestQueue queue = Volley.newRequestQueue(getApplication());
                 final StringRequest stringRequest2 = new StringRequest(Request.Method.GET, URL2,
                         new Response.Listener<String>() {
@@ -162,6 +167,15 @@ public class UserProfile extends FragmentActivity {
                 return null;
             }
         }.execute();
+    }
+
+    public void getAcceptedAppointments(){
+        if(!isCustomer){
+            requestForAcceptedAppointments("http://10.0.2.2:9000/doctor/getDoctorAppointments");
+        }
+        else {
+            requestForAcceptedAppointments("http://10.0.2.2:9000/customer/appointments");
+        }
     }
 
     @Override
